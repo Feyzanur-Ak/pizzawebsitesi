@@ -4,9 +4,10 @@ import { useHistory } from "react-router-dom";
 
 const AnaSayfa = () => {
 
+    const history = useHistory();
 
     const handleClick = () => {
-        
+        history.push("/SiparisFormu");
 
     }
 
