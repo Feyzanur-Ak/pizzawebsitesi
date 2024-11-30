@@ -57,7 +57,7 @@ const Secenek = ({ menu }) => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push("/SiparisOnayi");
+    history.push("/SiparisOlustur");
   }
   return (
     <MenuContainer >

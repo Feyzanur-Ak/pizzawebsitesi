@@ -7,6 +7,7 @@ const Menu = [
         price: 19.99,
         subscribe: 200,
         ratio: 4.5,
+        description: "Lezzetli sucuk dilimleri ve taze mantarların buluştuğu, özel soslarla zenginleştirilmiş bir İtalyan klasiği."
     },
     {
         id: 2,
@@ -15,6 +16,7 @@ const Menu = [
         price: 25.99,
         subscribe: 149,
         ratio: 4.2,
+         description: "Taptaze sebzeler ve özel soslarla hazırlanan, hafif ama doyurucu vejetaryan bir seçenek."
     },
     {
         id: 3,
@@ -23,6 +25,7 @@ const Menu = [
         price: 15.99,
         subscribe: 52,
         ratio: 4.7,
+        description: "Hellim peynirinin eşsiz lezzetiyle hazırlanan, çıtır çıtır hamur üzerinde nefis bir deneyim."
     },
  
     
