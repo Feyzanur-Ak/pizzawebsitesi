@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, FormFeedback } from "reactstrap";
 import styled from "styled-components";
 
 // Styled Components
@@ -222,10 +222,11 @@ const SiparisOlustur = () => {
                   onChange={handleExtraChange}
                   checked={extras.includes(extra)}
                 />
-                {extra}
+                    {extra}
               </Label>
-            </FormGroup>
-          ))}
+              </FormGroup>
+            ))}
+            {extras.length >= 10 && <FormFeedback >En fazla 10 adet Ek Malzeme Seçebilirsiniz</FormFeedback>}
         </ExtraContainer>
 
         {/* Sipariş Notu */}
