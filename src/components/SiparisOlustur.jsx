@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SiparisOnayi = () => {
+const SiparisOlustur = () => {
   return (
     <div>
         <h2>Siparişiniz Onaylandı!</h2>
@@ -8,4 +8,4 @@ const SiparisOnayi = () => {
   )
 }
 
-export default SiparisOnayi;
+export default SiparisOlustur;
