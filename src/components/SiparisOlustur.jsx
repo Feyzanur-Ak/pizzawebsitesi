@@ -73,18 +73,39 @@ const PriceDetail = styled.p`
 const QuantityControl = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start;
+
 `;
 
 const QuantityInput = styled.input`
-  width: 50px;
+  width: 40px;
   text-align: center;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 5px;
   background-color: #fff;
+  height: 2.3rem;
 `;
+const QuantityButton = styled.button`
+  width: 35px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background-color: #fdc913;
+  color: #292929;
+  cursor: pointer;
+
+  &:first-of-type {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+ 
+  &:last-of-type {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  `;
 
 const OrderButton = styled.button`
   margin-top: 20px;
@@ -226,7 +247,7 @@ const SiparisOlustur = () => {
               </Label>
               </FormGroup>
             ))}
-            {extras.length >= 10 && <FormFeedback >En fazla 10 adet Ek Malzeme Seçebilirsiniz</FormFeedback>}
+            {extras.length >= 4 && extras.length >=   <FormFeedback >En fazla 10 adet Ek Malzeme Seçebilirsiniz</FormFeedback>}
         </ExtraContainer>
 
         {/* Sipariş Notu */}
@@ -242,11 +263,11 @@ const SiparisOlustur = () => {
           
         {/* Sipariş Özeti */}
         <QuantityControl  >
-            <Button onClick={() => handleQuantityChange("decrement")}>-</Button>
+            <QuantityButton  onClick={() => handleQuantityChange("decrement")}>-</QuantityButton>
             <QuantityInput type="text" value={quantity} readOnly />
-            <Button onClick={() => handleQuantityChange("increment")}>+</Button>
+            <QuantityButton  onClick={() => handleQuantityChange("increment")}>+</QuantityButton>
           </QuantityControl>
-
+    <Section>
         <SummaryContainer>
           <SummaryTitle>Sipariş Toplamı</SummaryTitle>
           <PriceDetail>
@@ -257,7 +278,7 @@ const SiparisOlustur = () => {
           </PriceDetail>
 
         </SummaryContainer>
-
+        </Section>
         {/* Sipariş Ver Butonu */}
         <OrderButton>Sipariş Ver</OrderButton>
       </Form>
