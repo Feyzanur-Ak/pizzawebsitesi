@@ -9,7 +9,7 @@ const HeaderWrapper = styled.header`
   justify-content: center; 
   align-items: center;
   height: 150px; 
-  padding: 0; 
+  padding: 20px; 
 `;
 
 const Logo = styled.img`

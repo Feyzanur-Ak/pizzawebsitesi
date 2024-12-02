@@ -12,13 +12,14 @@ const Head = styled.header`
   height: 100vh; 
   width: 100%;
   text-align: center;
+  margin-top: -7rem;
 
 
   h1 {
     font-size: 3rem; 
     font-weight: 200; 
     letter-spacing: 2px;
-    transform: scale(1, 1.2); /* Harfleri uzun yap */
+    transform: scale(1, 1.2); /* Harfleri uzun yap ilki enine ikinci değer boyuna esnetir */
   
   }
 `;
