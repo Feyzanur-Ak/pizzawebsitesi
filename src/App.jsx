@@ -6,6 +6,7 @@ import SiparisFormu from './components/SiparisFormu';
 import Hero from './components/Hero';
 import Header from './components/Header';
 import SiparisOlustur from './components/SiparisOlustur';
+import SiparisOnay from './components/SiparisOnay';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" component={Hero} />
         <Route path="/SiparisFormu" component={SiparisFormu} />
         <Route path="/SiparisOlustur" component={SiparisOlustur} />
+        <Route path="/SiparisOnay" component={SiparisOnay} />
       </Switch>
     </BrowserRouter>
   );

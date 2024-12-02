@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 // Styled Components
 const Container = styled.div`
@@ -242,6 +243,7 @@ const SiparisOlustur = () => {
   const [note, setNote] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [userName, setUserName] = useState("");
+  const history = useHistory();
 
   const EXTRA_PRICE = 5;
   const BASE_PRICE = 85.5;
@@ -307,14 +309,15 @@ const SiparisOlustur = () => {
     try {
       // Axios POST isteği
       await axios.post("https://reqres.in/api/pizza ", orderData);
-
+    
       // Sipariş başarılı ise yönlendirme
       alert("Siparişiniz başarıyla oluşturuldu!");
-      window.location.href = "/siparis-onay";
+      history.push('/SiparisOnay'); // Doğru yönlendirme
     } catch (error) {
       console.error("Sipariş oluşturulurken hata oluştu:", error);
       alert("Sipariş oluşturulamadı. Lütfen tekrar deneyiniz.");
     }
+    
   };
 
   return (
