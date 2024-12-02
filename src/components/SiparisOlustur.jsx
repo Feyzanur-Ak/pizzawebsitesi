@@ -306,7 +306,7 @@ const SiparisOlustur = () => {
 
     try {
       // Axios POST isteği
-      await axios.post("https://your-api-endpoint.com/orders", orderData);
+      await axios.post("https://reqres.in/api/pizza ", orderData);
 
       // Sipariş başarılı ise yönlendirme
       alert("Siparişiniz başarıyla oluşturuldu!");
