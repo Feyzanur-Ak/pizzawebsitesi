@@ -16,6 +16,10 @@ const Content = styled.div`
   width: 100%;
   background-color: #faf7f2;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+ 
+  
 `;
 
 const Image = styled.img`
@@ -429,8 +433,8 @@ const SiparisOlustur = () => {
 
   return (
     <Container>
-        <Image src={logo} />
       <Content>
+      <Image src={logo} />
           <Title>{productDetails.name}</Title>
       <Price>{BASE_PRICE}₺</Price>
       <RatingContainer>
@@ -490,7 +494,7 @@ const SiparisOlustur = () => {
     </SelectionContainer>
 
     <ExtraContainer>
-      <SectionTitle>Ek Malzemeler</SectionTitle>
+      <SectionTitle >Ek Malzemeler</SectionTitle>
       <ExtraNote>En Fazla 10 malzeme seçebilirsiniz. 5₺</ExtraNote>
       <ExtraList>
         {ekstraMalzemeler.map((extra) => (
