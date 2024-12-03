@@ -2,15 +2,29 @@ import axios from "axios";
 import styled from "styled-components";
 import{ useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
+import logo from "../pictures/form-banner.png";
+
 
 
 const Container = styled.div`
   width: 30%;
   margin: 0 auto;
-  padding: 20px;
   font-family: "Roboto Condensed", sans-serif;
 `;
 
+const Content = styled.div`
+  width: 100%;
+  background-color: #faf7f2;
+  text-align: center;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+`;
+
+  
 const Title = styled.h1`
   font-size: 24px;
   font-weight: bold;
@@ -52,20 +66,47 @@ const SelectionContainer = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 20px;
+  flex-wrap: wrap; /* Ekran küçüldüğünde, kutular alt alta sıralanabilir */
 `;
 
 const Section = styled.div`
   flex: 1;
   margin-right: 20px;
-
+  display: flex;
+  flex-direction: column;  /* Seçeneklerin dikey sıralanmasını sağlamak */
+  
   &:last-child {
     margin-right: 0;
   }
+
 `;
 
 const SectionTitle = styled.h3`
   margin-bottom: 10px;
   font-weight: bold;
+  color: black,;  /* Başlık rengini kırmızı yapıyoruz */
+  
+  &::after {
+    content: " *"; /* Yıldız işaretini başlığa ekliyoruz */
+    color: red; /* Yıldız işareti kırmızı olacak */
+  }
+`;
+
+
+const SelectionOption = styled.div`
+  margin-bottom: 10px;
+  font-size: 1rem;
+  
+  input[type="radio"] {
+    margin-right: 10px;  /* Radyo butonlarının sağında boşluk */
+  }
+
+  select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 `;
 
 const ExtraContainer = styled.div`
@@ -74,14 +115,19 @@ const ExtraContainer = styled.div`
 
 const ExtraList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr); /* 3 sütun */
+  grid-template-rows: repeat(5, auto); /* Her sütunda 5 satır */
+  gap: 15px;
+  max-height: 300px;
+ 
+  
+ 
 `;
 
 const ExtraNote = styled.p`
-  margin-top: 10px;
-  font-size: 14px;
+font-size: 14px;
   color: #666;
+  margin-bottom: 15px;
 `;
 
 const NoteContainer = styled.div`
@@ -96,10 +142,12 @@ const NoteInput = styled.textarea`
   border: 1px solid #ccc;
   resize: none;
   margin-bottom: 20px;
+  background-color: #faf7f2;
 `;
 
 const InputContainer = styled.div`
   margin-bottom: 20px;
+  
 `;
 
 const InputLabel = styled.label`
@@ -107,6 +155,7 @@ const InputLabel = styled.label`
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
+  
 
   span {
     color: red;
@@ -114,6 +163,7 @@ const InputLabel = styled.label`
 `;
 
 const InputField = styled.input`
+ background-color: #faf7f2;
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -125,25 +175,24 @@ const SummarySection = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 20px;
+
 `;
 
 const SummaryContainer = styled.div`
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px;
-  background-color: transparent;
-  width: 100%;
+  padding: 80px;
+   background-color: #faf7f2;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
 const SummaryTitle = styled.h3`
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 20px;
   text-align: left;
   color: #333;
 `;
@@ -176,11 +225,11 @@ const QuantityControl = styled.div`
 
 const QuantityButton = styled.button`
   width: 40px;
-  height: 40px;
+  height: 42px;
   font-size: 18px;
-  font-weight: bold;
-  background-color: #fdc913;
-  color: #292929;
+  background-color: #faf7f2;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 
 
@@ -196,10 +245,10 @@ const QuantityInput = styled.input`
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  border: 1px solid #ddd;
+  border:none;
   border-left: none;
   border-right: none;
-  background-color: #fff;
+  background-color: #faf7f2;
   color: #333;
   border-radius: 0;
   box-shadow: none;
@@ -216,15 +265,11 @@ const OrderButton = styled.button`
   padding: 15px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
-  background-color: #fdc913;
+  background-color: #faf7f2;
   color: #292929;
   cursor: pointer;
-
-  &:hover {
-    background-color: #fbbd0b;
-  }
 
   &:disabled {
     background-color: #e0e0e0;
@@ -232,7 +277,42 @@ const OrderButton = styled.button`
     cursor: not-allowed;
   }
 `;
+const CheckboxContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+`;
 
+const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
+  display: none;
+`;
+
+const StyledCheckbox = styled.div`
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  background-color: ${(props) => (props.checked ? '#FDC913' : '#faf7f2')};
+  border: 2px solid #ccc;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+
+  &::after {
+    content: ${(props) => (props.checked ? `"✓"` : '""')};
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+  }
+`;
+
+const Label = styled.label`
+  font-size: 16px;
+  cursor: pointer;
+`;
 // Main Component
 const SiparisOlustur = () => {
   const location = useLocation();
@@ -349,80 +429,87 @@ const SiparisOlustur = () => {
 
   return (
     <Container>
-      <Title>{productDetails.name}</Title>
+        <Image src={logo} />
+      <Content>
+          <Title>{productDetails.name}</Title>
       <Price>{BASE_PRICE}₺</Price>
       <RatingContainer>
         <Rating>{productDetails.ratio} ⭐</Rating>
         <ReviewCount>({productDetails.subscribe})</ReviewCount>
       </RatingContainer>
-      <Description>
-        {productDetails.description} 
-      </Description>
+      <Description>{productDetails.description}</Description>
+    </Content>
 
       <form onSubmit={(e) => e.preventDefault()}>
-        <SelectionContainer>
-          <Section>
-            <SectionTitle>Boyut Seç *</SectionTitle>
-            <div>
-              <input
-                type="radio"
-                name="size"
-                value="Küçük"
-                onChange={(e) => setSize(e.target.value)}
-              />{" "}
-              Küçük
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="size"
-                value="Orta"
-                onChange={(e) => setSize(e.target.value)}
-              />{" "}
-              Orta
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="size"
-                value="Büyük"
-                onChange={(e) => setSize(e.target.value)}
-              />{" "}
-              Büyük
-            </div>
-          </Section>
+          <SelectionContainer>
+      <Section>
+        <SectionTitle>Boyut Seç</SectionTitle>
+        <SelectionOption>
+          <input
+            type="radio"
+            name="size"
+            value="Küçük"
+            onChange={(e) => setSize(e.target.value)}
+          />
+          Küçük
+        </SelectionOption>
+        <SelectionOption>
+          <input
+            type="radio"
+            name="size"
+            value="Orta"
+            onChange={(e) => setSize(e.target.value)}
+          />
+          Orta
+        </SelectionOption>
+        <SelectionOption>
+          <input
+            type="radio"
+            name="size"
+            value="Büyük"
+            onChange={(e) => setSize(e.target.value)}
+          />
+          Büyük
+        </SelectionOption>
+      </Section>
 
-          <Section>
-            <SectionTitle>Hamur Seç *</SectionTitle>
-            <select
-              value={dough}
-              onChange={(e) => setDough(e.target.value)}
-            >
-              <option value="">Hamur Kalınlığı</option>
-              <option value="İnce">İnce</option>
-              <option value="Normal">Normal</option>
-              <option value="Kalın">Kalın</option>
-            </select>
-          </Section>
-        </SelectionContainer>
+      <Section>
+        <SectionTitle>Hamur Seç</SectionTitle>
+        <SelectionOption>
+          <select
+            value={dough}
+            onChange={(e) => setDough(e.target.value)}
+          >
+            <option value="">Hamur Kalınlığı</option>
+            <option value="İnce">İnce</option>
+            <option value="Normal">Normal</option>
+            <option value="Kalın">Kalın</option>
+          </select>
+        </SelectionOption>
+      </Section>
+    </SelectionContainer>
 
-        <ExtraContainer>
-          <SectionTitle>Ek Malzemeler</SectionTitle>
-          <ExtraNote>En Fazla 10 malzeme seçebilirsiniz. 5₺</ExtraNote>
-          <ExtraList>
-            {ekstraMalzemeler.map((extra) => (
-              <div key={extra}>
-                <input
-                  type="checkbox"
-                  value={extra}
-                  onChange={handleExtraChange}
-                  checked={extras.includes(extra)}
-                />{" "}
-                {extra}
-              </div>
-            ))}
-          </ExtraList>
-        </ExtraContainer>
+    <ExtraContainer>
+      <SectionTitle>Ek Malzemeler</SectionTitle>
+      <ExtraNote>En Fazla 10 malzeme seçebilirsiniz. 5₺</ExtraNote>
+      <ExtraList>
+        {ekstraMalzemeler.map((extra) => (
+          <CheckboxContainer key={extra}>
+            <HiddenCheckbox
+              type="checkbox"
+              value={extra}
+              onChange={handleExtraChange}
+              checked={extras.includes(extra)}
+            />
+            <StyledCheckbox
+              checked={extras.includes(extra)}
+              onClick={() => handleExtraChange({ target: { value: extra } })}
+            />
+            <Label>{extra}</Label>
+          </CheckboxContainer>
+        ))}
+      </ExtraList>
+    </ExtraContainer>
 
         <NoteContainer>
           <SectionTitle>Sipariş Notu</SectionTitle>
