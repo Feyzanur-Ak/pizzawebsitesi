@@ -18,6 +18,27 @@ const Navbar = styled.div`
   font-family: "Roboto Condensed", sans-serif;
   background-color: #faf7f2;
 `;
+const Content = styled.div`
+  display: flex;    
+  flex-direction: column;
+  text-align: center;
+  background-color: #faf7f2;
+
+  h1{
+    font-size: 25px;
+    font-family: "Roboto Mono", serif;
+    font-weight: bold;
+    margin-top: -15px;
+  }
+
+  h2{
+    font-family: "Satisfy", cursive;
+    color:red;
+    font-weight: normal;
+    font-size: 32px;
+  }
+ 
+  `;
 
 const MenuItem = styled.div`
   display: flex;
@@ -65,7 +86,10 @@ const MenuSection2 = () => {
 
   return (
     <Container>
-  
+        <Content>
+            <h2>en çok paketlenen menüler</h2>
+            <h1>Acıktıran Kodlara Doyuran Lezzetler</h1>
+        </Content>
       <Navbar>
         {menuItems.map((item) => (
           <MenuItem

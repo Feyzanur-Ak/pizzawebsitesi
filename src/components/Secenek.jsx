@@ -21,6 +21,7 @@ const PizzaImage = styled.img`
   width: 60%;
   border-radius: 50%;
   margin-bottom: 15px;
+  cursor: pointer;
 `;
 
 const PizzaName = styled.h2`
