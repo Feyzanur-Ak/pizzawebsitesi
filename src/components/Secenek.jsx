@@ -7,7 +7,7 @@ const MenuContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center; 
+  text-align: center;
   border: 1px solid white;
   background-color: white;
   border-radius: 10px;
@@ -47,11 +47,13 @@ const DetailsContainer = styled.div`
 
 const Secenek = ({ activeMenu }) => {
   const { name, image, price, subscribe, ratio } = activeMenu;
-
   const history = useHistory();
 
   const handleClick = () => {
-    history.push("/SiparisOlustur");
+    history.push({
+      pathname: "/SiparisOlustur",
+      state: { name, image, price, subscribe, ratio }, // Ürün bilgilerini gönderiyoruz
+    });
   };
 
   return (

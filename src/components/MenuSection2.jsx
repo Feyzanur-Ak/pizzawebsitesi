@@ -83,6 +83,7 @@ const MenuSection2 = () => {
     { id: "SoftDrink", label: "Soft Drink", icon: nav6 },
   ];
 
+
   return (
     <Container >
       <Content>

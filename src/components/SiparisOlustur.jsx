@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import{ useState, useEffect } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -237,16 +237,26 @@ const OrderButton = styled.button`
 
 // Main Component
 const SiparisOlustur = () => {
+  const location = useLocation();
+  const history = useHistory();
+
+  const [productDetails, setProductDetails] = useState({
+    name: "",
+    image: "",
+    price: 0,
+    subscribe: "",
+    ratio: "",
+  });
   const [size, setSize] = useState("");
   const [dough, setDough] = useState("");
   const [extras, setExtras] = useState([]);
   const [note, setNote] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [userName, setUserName] = useState("");
-  const history = useHistory();
+
 
   const EXTRA_PRICE = 5;
-  const BASE_PRICE = 85.5;
+  const BASE_PRICE = productDetails.price;
 
   const ekstraMalzemeler = [
     "Pepperoni",
@@ -263,6 +273,12 @@ const SiparisOlustur = () => {
     "Soğan",
     "Sarımsak",
   ];
+
+  useEffect(() => {
+    if (location.state) {
+      setProductDetails(location.state); 
+    }
+  }, [location.state]);
 
   const handleExtraChange = (e) => {
     const value = e.target.value;
@@ -322,18 +338,14 @@ const SiparisOlustur = () => {
 
   return (
     <Container>
-      <Title>Position Absolute Acı Pizza</Title>
-      <Price>85.50₺</Price>
+      <Title>{productDetails.name}</Title>
+      <Price>{BASE_PRICE}₺</Price>
       <RatingContainer>
-        <Rating>4.9</Rating>
-        <ReviewCount>(200)</ReviewCount>
+        <Rating>{productDetails.ratio} ⭐</Rating>
+        <ReviewCount>({productDetails.subscribe})</ReviewCount>
       </RatingContainer>
       <Description>
-        Frontend dünyası hala position:absolute kullanıyorsan bu çok acı pizza tam sana
-        göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış,
-        daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta
-        pişirilir, genellikle yuvarlak, düzeltilmiş mayalı buğday bazlı hamurdan oluşan
-        İtalyan kökenli lezzetli bir yemektir. Küçük bir pizzaya bazen pizzetta denir.
+        {productDetails.name} 
       </Description>
 
       <form onSubmit={(e) => e.preventDefault()}>
