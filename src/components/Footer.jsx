@@ -11,13 +11,17 @@ import insta4 from "../pictures/li-3.png";
 import insta5 from "../pictures/li-4.png";
 import insta6 from "../pictures/li-5.png";
 
-
 const Foot = styled.footer`
-  background-color:#292929;
+  background-color: #292929;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
   padding-left: 300px;
   padding-top: 50px;
+
+  @media (max-width: 768px) {
+    padding-left: 20px;
+    padding-top: 30px;
+  }
 `;
 
 const Container = styled.div`
@@ -26,6 +30,11 @@ const Container = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 0 10px;
+  }
 `;
 
 const CommunicationContainer = styled.div`
@@ -33,6 +42,7 @@ const CommunicationContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: flex-start;
 
   img {
     width: 30px;
@@ -48,8 +58,16 @@ const CommunicationContainer = styled.div`
   }
 
   .logo {
-    width: 150px; /* Logo boyutu */
-    margin-bottom: 20px; /* Logo alt boşluğu */
+    width: 150px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    text-align: left;
+    .logo {
+      width: 120px;
+    }
   }
 `;
 
@@ -71,43 +89,59 @@ const MenuContainer = styled.div`
     font-size: 14px;
     margin: 10px 0;
   }
+
+  @media (max-width: 768px) {
+    text-align: left;
+    padding: 0 10px;
+  }
 `;
-const Section=styled.div`
+
+const Section = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
-
-  
- 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: left;
+  }
 `;
-const SocialContainer = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
 
+const SocialContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   h2 {
     font-size: 18px;
     text-align: left;
     padding-left: 20px;
   }
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    text-align: left;
+  }
 `;
 
 const ImageContainer = styled.div`
-  display: flex;    
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 10px;
-  margin-top: 80px;
+  margin-top: 20px;
 
   img {
-    width: 80px;
-    height: 80px;    
+    width: 100%;
+    height: auto;
     object-fit: cover;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* Single column */
+  }
 `;
+
 const FooterBottom = styled.div`
-  margin:0 10px 0 0;
+  margin: 0 10px 0 0;
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
@@ -118,9 +152,10 @@ const FooterBottom = styled.div`
     margin: 0;
   }
 
-  .twitter-icon {
-    width: 20px;
-    height: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 `;
 
@@ -129,26 +164,26 @@ const Footer = () => {
     <Foot>
       <Container>
         <Section>
-        <CommunicationContainer>
-          <img src={logo} alt="Logo" className="logo" />
-          <p><img src={location} alt="Location" /> 341 Londonderry Road, Istanbul Türkiye</p>
-          <p><img src={message} alt="Message" /> aciktim@teknolojik yemekler.com</p>
-          <p><img src={phone} alt="Phone" /> +90 216 123 45 67</p>
-        </CommunicationContainer>
+          <CommunicationContainer>
+            <img src={logo} alt="Logo" className="logo" />
+            <p><img src={location} alt="Location" /> 341 Londonderry Road, Istanbul Türkiye</p>
+            <p><img src={message} alt="Message" /> aciktim@teknolojik yemekler.com</p>
+            <p><img src={phone} alt="Phone" /> +90 216 123 45 67</p>
+          </CommunicationContainer>
 
-        
-        <MenuContainer>
-          <h2>Sıccacık Menü</h2>
-          <ul>
-            <li>Terminal Pizza</li>
-            <li>5 Kişilik Hackathon Pizza</li>
-            <li>useEffect Tavuklu Pizza</li>
-            <li>Beyaz Console Frosty</li>
-            <li>Testler Geçti Mutlu Burger</li>
-            <li>Position Absolute Acı Burger</li>
-          </ul>
-        </MenuContainer>
+          <MenuContainer>
+            <h2>Sıccacık Menü</h2>
+            <ul>
+              <li>Terminal Pizza</li>
+              <li>5 Kişilik Hackathon Pizza</li>
+              <li>useEffect Tavuklu Pizza</li>
+              <li>Beyaz Console Frosty</li>
+              <li>Testler Geçti Mutlu Burger</li>
+              <li>Position Absolute Acı Burger</li>
+            </ul>
+          </MenuContainer>
         </Section>
+
         {/* Social Section */}
         <SocialContainer>
           <h2>Instagram</h2>
@@ -166,7 +201,6 @@ const Footer = () => {
       {/* Footer Bottom Section */}
       <FooterBottom>
         <p>© 2023 Teknolojik Yemekler. All rights reserved.</p>
-      
       </FooterBottom>
     </Foot>
   );
