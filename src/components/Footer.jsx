@@ -118,25 +118,32 @@ const SocialContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    align-items: flex-start;
-    text-align: left;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 30%;
   }
 `;
 
 const ImageContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
+  width:80%
 
   img {
-    width: 100%;
-    height: auto;
+    width: 30%;
+    
     object-fit: cover;
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; /* Single column */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
