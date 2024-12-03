@@ -11,6 +11,10 @@ const Hero = () => {
   return (
     <main className="AnaSayfa-container">
       <header className="AnaSayfa-header">
+      <h2 >
+       fırsatı kaçırma
+      </h2>
+
         <h1>
           KOD ACIKTIRIR <br /> PIZZA, DOYURUR
         </h1>
