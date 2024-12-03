@@ -2,9 +2,15 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   e2e: {
-    specPattern: "cypress/e2e/**/*.cy.js",  // Test dosyanızın bulunduğu dizini belirtin
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
+    specPattern: "cypress/e2e/**/*.cy.js", // Adjust this to where your test files are located
+    baseUrl: 'http://localhost:5176',
+  },
+
+  component: {
+    devServer: {
+      framework: "react",
+      bundler: "webpack",
     },
   },
 });
+
