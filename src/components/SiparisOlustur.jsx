@@ -8,6 +8,7 @@ const Container = styled.div`
   width: 30%;
   margin: 0 auto;
   padding: 20px;
+  font-family: "Roboto Condensed", sans-serif;
 `;
 
 const Title = styled.h1`
@@ -40,7 +41,7 @@ const ReviewCount = styled.span`
 `;
 
 const Description = styled.p`
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.5;
   color: #333;
   margin-top: 10px;
@@ -246,6 +247,7 @@ const SiparisOlustur = () => {
     price: 0,
     subscribe: "",
     ratio: "",
+    description: "",
   });
   const [size, setSize] = useState("");
   const [dough, setDough] = useState("");
@@ -345,7 +347,7 @@ const SiparisOlustur = () => {
         <ReviewCount>({productDetails.subscribe})</ReviewCount>
       </RatingContainer>
       <Description>
-        {productDetails.name} 
+        {productDetails.description} 
       </Description>
 
       <form onSubmit={(e) => e.preventDefault()}>

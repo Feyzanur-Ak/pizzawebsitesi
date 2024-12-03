@@ -46,13 +46,13 @@ const DetailsContainer = styled.div`
 `;
 
 const Secenek = ({ activeMenu }) => {
-  const { name, image, price, subscribe, ratio } = activeMenu;
+  const { name, image, price, subscribe, ratio, description } = activeMenu;
   const history = useHistory();
 
   const handleClick = () => {
     history.push({
       pathname: "/SiparisOlustur",
-      state: { name, image, price, subscribe, ratio }, // Ürün bilgilerini gönderiyoruz
+      state: { name, image, price, subscribe, ratio, description }, // Ürün bilgilerini gönderiyoruz
     });
   };
 
