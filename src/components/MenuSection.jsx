@@ -12,9 +12,6 @@ import kart3 from "../pictures/kart-3.png";
 import { Container } from "reactstrap"; 
 import { useHistory } from "react-router-dom";
 
-// Styled Components
-
-
 
 const Navbar = styled.div`
   display: flex;
@@ -23,7 +20,8 @@ const Navbar = styled.div`
   padding: 0 200px;
   margin: 10px;
   font-family: "Roboto Condensed", sans-serif;
-
+  flex-wrap: wrap; /* Öğelerin sarılmasına izin veriyoruz */
+  
   p {
     display: flex;
     align-items: center;
@@ -36,49 +34,79 @@ const Navbar = styled.div`
       height: 30px;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+    justify-content: space-between; /* Öğeleri ikiye bölerek hizalayalım */
+    
+    p {
+      font-size: 14px;
+      width: 48%; 
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 const ImageSection = styled.div`
   display: flex;
-  gap:10px;
+  gap: 10px;
   padding: 100px 150px;
- justify-content:center;
- align-items: center;
-background-color: #faf7f2;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf7f2;
+ 
+
+  @media (max-width: 768px) {
+    flex-direction: column; 
+    padding: 30px 20px;
+  }
 `;
 
 const ImageContainer = styled.div`
   background-color: #ce2829;
-  position: relative;
-  width: 40%; 
+ 
+  width: 40%;
   display: flex;
   flex-direction: column;
-  justify-content:space-around
+  justify-content: center; 
 
-
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 20px; 
+    position: relative;
+  }
 `;
 
 const RightImages = styled.div`
   display: flex;
   flex-direction: column;
-   width: 40%; 
-  border:none;
-  position: relative; 
+  width: 40%;
+  border: none;
+  position: relative;
 
-    img {
-      border-radius: 10px;
-      width: 100%;
-      object-fit: cover;
-      margin:5px;
-    }
-  
+  img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+    margin: 5px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px; 
+  }
 `;
 
 const Content = styled.div`
   position: absolute;
   top: 20px;
   left: 30px;
-  color:white;
+  color: white;
 
   h1 {
     font-size: 3rem;
@@ -89,17 +117,34 @@ const Content = styled.div`
   p {
     font-size: 16px;
     margin-bottom: 20px;
-    color:white;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    top: 0%; 
+    left: 10px;
+   
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 `;
 
-const Content1=styled.div`
+const Content1 = styled.div`
   position: absolute;
   left: 40px;
   padding-top: 20px;
-  color:black;
-  background-color:transparent
+  color: black;
+  background-color: transparent;
 
+  @media (max-width: 768px) {
+    left: 20px;
+    top: 10px;
+  }
 `;
 
 const Button = styled.button`
@@ -112,20 +157,24 @@ const Button = styled.button`
   border-radius: 20px;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
 `;
 
-// React Component
 
+
+// React Component
 const MenuSection = () => {
 
   const history = useHistory();
   const handleClick = () => {
-  history.push("/SiparisOlustur");
+    history.push("/SiparisOlustur");
   }
 
   return (
     <Container>
-   
       <Navbar>
         <p>
           <img src={nav1} alt="nav1" /> YENİ! Kore
@@ -147,11 +196,11 @@ const MenuSection = () => {
         </p>
       </Navbar>
 
-      {/* Main Image Section */}
+     
       <ImageSection>
-        {/* Left Block */}
+        
         <ImageContainer>
-        <img src={kart1} alt="Pizza" />
+          <img src={kart1} alt="Pizza" />
           <Content>
             <h1>Özel <br /> Lezzetus</h1>
             <p>Position: Absolute Acı Burger</p>
@@ -159,7 +208,7 @@ const MenuSection = () => {
           </Content>
         </ImageContainer>
 
-     
+        {/* Right Block */}
         <RightImages>
           <div>
             <Content1>
@@ -167,7 +216,7 @@ const MenuSection = () => {
               <Button onClick={handleClick}>SİPARİŞ VER</Button>
             </Content1>
             <img src={kart2} alt="Hackathlon" />
-              <Content1>
+            <Content1>
               <h2> <span style={{ color: "red" }}>Çooook</span> Hızlı <br /> npm gibi kurye</h2>
               <Button onClick={handleClick}>SİPARİŞ VER</Button>
             </Content1>
