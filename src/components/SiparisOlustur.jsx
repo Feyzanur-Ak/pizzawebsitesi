@@ -183,9 +183,6 @@ const QuantityButton = styled.button`
   color: #292929;
   cursor: pointer;
 
-  &:hover {
-    background-color: #fbbd0b;
-  }
 
   &:disabled {
     background-color: #e0e0e0;
@@ -293,6 +290,8 @@ const SiparisOlustur = () => {
     }
   };
 
+  
+
   const handleQuantityChange = (type) => {
     setQuantity((prev) => (type === "increment" ? prev + 1 : Math.max(prev - 1, 1)));
   };
@@ -322,7 +321,17 @@ const SiparisOlustur = () => {
       note,
       quantity,
       total: calculateTotal(),
+      productDetails: {
+        name: productDetails.name,
+        image: productDetails.image,
+        price: productDetails.price,
+        subscribe: productDetails.subscribe,
+        ratio: productDetails.ratio,
+        description: productDetails.description,
+      },
     };
+
+    console.log("OrderData:", orderData); 
 
     try {
       // Axios POST isteği
@@ -330,7 +339,7 @@ const SiparisOlustur = () => {
     
       // Sipariş başarılı ise yönlendirme
       alert("Siparişiniz başarıyla oluşturuldu!");
-      history.push('/SiparisOnay'); // Doğru yönlendirme
+      history.push('/SiparisOnay', orderData); // Doğru yönlendirme
     } catch (error) {
       console.error("Sipariş oluşturulurken hata oluştu:", error);
       alert("Sipariş oluşturulamadı. Lütfen tekrar deneyiniz.");
