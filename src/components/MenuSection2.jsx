@@ -9,7 +9,6 @@ import nav6 from "../pictures/6.svg";
 import Secenekler from "./Secenekler";
 import { Container } from "reactstrap";
 
-
 const Navbar = styled.div`
   display: flex;
   justify-content: center;
@@ -25,25 +24,26 @@ const MenuItem = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0px 35px;
-  border-radius:80px;
+  padding: 10px 35px;
+  border-radius: 80px;
   cursor: pointer;
   font-size: 16px;
   background-color: ${(props) => (props.active ? "black" : "white")};
   color: ${(props) => (props.active ? "white" : "black")};
   box-shadow: ${(props) =>
-  props.active ? "0 4px 8px rgba(0, 0, 0, 0.2)" : "0 2px 5px rgba(0, 0, 0, 0.1)"};
+    props.active ? "0 4px 8px rgba(0, 0, 0, 0.2)" : "0 2px 5px rgba(0, 0, 0, 0.1)"};
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 
-  p{
+  p {
     display: flex;
     align-items: center;
     gap: 10px;
   }
+
   img {
     width: 35px;
     height: 30px;
@@ -51,9 +51,8 @@ const MenuItem = styled.div`
   }
 `;
 
-// Component
 const MenuSection2 = () => {
-  const [activeMenu, setActiveMenu] = useState("Ramen");
+  const [activeMenu, setActiveMenu] = useState("Pizza"); 
 
   const menuItems = [
     { id: "Ramen", label: "Ramen", icon: nav1 },
@@ -66,19 +65,24 @@ const MenuSection2 = () => {
 
   return (
     <Container>
-    <Navbar>
-      {menuItems.map((item) => (
-        <MenuItem
-          key={item.id}
-          active={activeMenu === item.id}
-          onClick={() => setActiveMenu(item.id)}
-        >
-          <p><img src={item.icon} />{item.label}</p>
-     
-        </MenuItem>
-      ))}
-    </Navbar>
-    <Secenekler/>
+  
+      <Navbar>
+        {menuItems.map((item) => (
+          <MenuItem
+            key={item.id}
+            active={activeMenu === item.id}
+            onClick={() => setActiveMenu(item.id)} 
+          >
+            <p>
+              <img src={item.icon} alt={item.label} />
+              {item.label}
+            </p>
+          </MenuItem>
+        ))}
+      </Navbar>
+
+    
+      <Secenekler activeMenu={activeMenu} />
     </Container>
   );
 };

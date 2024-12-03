@@ -9,10 +9,10 @@ const MenuContainer = styled.div`
   justify-content: center;
   text-align: center; 
   border: 1px solid white;
-  background-color:white;
+  background-color: white;
   border-radius: 10px;
   padding: 20px;
-  width:20%;
+  width: 20%;
   margin: 2px;
   margin-bottom: 50px;
 `;
@@ -21,7 +21,6 @@ const PizzaImage = styled.img`
   width: 60%;
   border-radius: 50%;
   margin-bottom: 15px;
-  cursor: pointer;
 `;
 
 const PizzaName = styled.h2`
@@ -45,16 +44,17 @@ const DetailsContainer = styled.div`
   color: #555;
 `;
 
-const Secenek = ({ menu }) => {
-  const { name, image, price, subscribe, ratio } = menu;
+const Secenek = ({ activeMenu }) => {
+  const { name, image, price, subscribe, ratio } = activeMenu;
 
   const history = useHistory();
 
   const handleClick = () => {
     history.push("/SiparisOlustur");
-  }
+  };
+
   return (
-    <MenuContainer >
+    <MenuContainer>
       <PizzaImage src={image} alt={name} onClick={handleClick} />
       <PizzaName>{name}</PizzaName>
       <PriceContainer>{price}₺</PriceContainer>
@@ -62,7 +62,7 @@ const Secenek = ({ menu }) => {
         <span>{ratio} ⭐</span>
         <span>({subscribe})</span>
       </DetailsContainer>
-     </MenuContainer>
+    </MenuContainer>
   );
 };
 

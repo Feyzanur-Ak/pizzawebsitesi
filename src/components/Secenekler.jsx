@@ -1,21 +1,27 @@
 import React from "react";
-import Menu from "../yemekMenu.js";
-import Secenek from "./Secenek.jsx";
 import styled from "styled-components";
+import Menu from "../yemekMenu.js"; // Menü verileri
+import Secenek from "./Secenek.jsx";
 
 const GridContainer = styled.div`
   display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
-  gap: 20px; 
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
   background-color: #faf7f2;
 `;
 
-const Secenekler = () => {
-  const secenekler = Menu.map((menu) => <Secenek key={menu.id} menu={menu} />);
+const Secenekler = ({ activeMenu }) => {
+  const filteredItems = Menu[activeMenu] || []; // Aktif menüye göre filtrele
 
-  return <GridContainer>{secenekler}</GridContainer>;
+  return (
+    <GridContainer>
+      {filteredItems.map((menu) => (
+        <Secenek key={menu.id} activeMenu={menu} />
+      ))}
+    </GridContainer>
+  );
 };
 
 export default Secenekler;
