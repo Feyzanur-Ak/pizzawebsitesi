@@ -91,7 +91,26 @@ const SiparisToplam = styled.div`
     font-weight: normal;
   }
 
+  @media (max-width: 768px) {
+    width: 50%;  
+    padding: 15px;
+    margin-top: 30px;
+    
+    h3 {
+      font-size: 1.2rem;  
+    }
 
+    p {
+      font-size: 1rem;  
+      width: 100%;  
+      justify-content: space-between;
+    }
+
+    .highlight {
+      font-size: 1.1rem; 
+    }
+
+  }
 `;
 
 const SiparisOnay = () => {
