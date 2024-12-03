@@ -9,6 +9,7 @@ import Footer from './components/Footer'; // Footer bileşenini import edin
 import SiparisOlustur from './components/SiparisOlustur';
 import SiparisOnay from './components/SiparisOnay';
 import MenuSection from './components/MenuSection';
+import MenuSection2 from './components/MenuSection2';
 
 
 
@@ -24,6 +25,7 @@ function App() {
             <>
               <Hero />
               <MenuSection />
+              <MenuSection2 />
             </>
           )}
         />

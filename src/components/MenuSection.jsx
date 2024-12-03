@@ -116,7 +116,7 @@ const Button = styled.button`
 const MenuSection = () => {
   return (
     <Container>
-      {/* Navigation Bar */}
+   
       <Navbar>
         <p>
           <img src={nav1} alt="nav1" /> YENİ! Kore

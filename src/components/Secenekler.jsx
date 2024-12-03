@@ -9,6 +9,7 @@ const GridContainer = styled.div`
   justify-content: center; 
   gap: 20px; 
   padding: 20px;
+  background-color: #faf7f2;
 `;
 
 const Secenekler = () => {
