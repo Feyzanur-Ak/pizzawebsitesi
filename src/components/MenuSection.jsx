@@ -9,9 +9,12 @@ import nav6 from "../pictures/6.svg";
 import kart1 from "../pictures/kart-1.png";
 import kart2 from "../pictures/kart-2.png";
 import kart3 from "../pictures/kart-3.png";
-import { Container } from "reactstrap"; // Eğer reactstrap yoksa npm install reactstrap komutunu çalıştırın
+import { Container } from "reactstrap"; 
+import { useHistory } from "react-router-dom";
 
 // Styled Components
+
+
 
 const Navbar = styled.div`
   display: flex;
@@ -114,6 +117,12 @@ const Button = styled.button`
 // React Component
 
 const MenuSection = () => {
+
+  const history = useHistory();
+  const handleClick = () => {
+  history.push("/SiparisOlustur");
+  }
+
   return (
     <Container>
    
@@ -146,7 +155,7 @@ const MenuSection = () => {
           <Content>
             <h1>Özel <br /> Lezzetus</h1>
             <p>Position: Absolute Acı Burger</p>
-            <Button>SİPARİŞ VER</Button>
+            <Button onClick={handleClick}>SİPARİŞ VER</Button>
           </Content>
         </ImageContainer>
 
@@ -155,12 +164,12 @@ const MenuSection = () => {
           <div>
             <Content1>
               <h2 style={{ color: "white" }}>Hackathlon <br /> Burger Menü</h2>
-              <Button>SİPARİŞ VER</Button>
+              <Button onClick={handleClick}>SİPARİŞ VER</Button>
             </Content1>
             <img src={kart2} alt="Hackathlon" />
               <Content1>
               <h2> <span style={{ color: "red" }}>Çooook</span> Hızlı <br /> npm gibi kurye</h2>
-              <Button>SİPARİŞ VER</Button>
+              <Button onClick={handleClick}>SİPARİŞ VER</Button>
             </Content1>
             <img src={kart3} alt="Kurye" />
           </div>

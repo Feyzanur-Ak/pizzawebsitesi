@@ -13,32 +13,32 @@ const Navbar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 35px;
+  gap: 45px;
   padding: 20px 0;
   font-family: "Roboto Condensed", sans-serif;
   background-color: #faf7f2;
 `;
+
 const Content = styled.div`
-  display: flex;    
+  display: flex;
   flex-direction: column;
   text-align: center;
   background-color: #faf7f2;
 
-  h1{
-    font-size: 25px;
-    font-family: "Roboto Mono", serif;
-    font-weight: bold;
+  h1 {
+    font-size: 45px;
+    font-family: "Oswald", serif;
+    font-weight: normal;
     margin-top: -15px;
   }
 
-  h2{
+  h2 {
     font-family: "Satisfy", cursive;
-    color:red;
+    color: red;
     font-weight: normal;
     font-size: 32px;
   }
- 
-  `;
+`;
 
 const MenuItem = styled.div`
   display: flex;
@@ -71,9 +71,8 @@ const MenuItem = styled.div`
     margin-bottom: 5px;
   }
 `;
-
 const MenuSection2 = () => {
-  const [activeMenu, setActiveMenu] = useState("Pizza"); 
+    const [activeMenu, setActiveMenu] = useState("Pizza");
 
   const menuItems = [
     { id: "Ramen", label: "Ramen", icon: nav1 },
@@ -85,17 +84,17 @@ const MenuSection2 = () => {
   ];
 
   return (
-    <Container>
-        <Content>
-            <h2>en çok paketlenen menüler</h2>
-            <h1>Acıktıran Kodlara Doyuran Lezzetler</h1>
-        </Content>
+    <Container >
+      <Content>
+        <h2>en çok paketlenen menüler</h2>
+        <h1>Acıktıran Kodlara Doyuran Lezzetler</h1>
+      </Content>
       <Navbar>
         {menuItems.map((item) => (
           <MenuItem
             key={item.id}
             active={activeMenu === item.id}
-            onClick={() => setActiveMenu(item.id)} 
+            onClick={() => setActiveMenu(item.id)}
           >
             <p>
               <img src={item.icon} alt={item.label} />
@@ -104,8 +103,6 @@ const MenuSection2 = () => {
           </MenuItem>
         ))}
       </Navbar>
-
-    
       <Secenekler activeMenu={activeMenu} />
     </Container>
   );

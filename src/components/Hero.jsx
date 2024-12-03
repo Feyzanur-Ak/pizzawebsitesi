@@ -1,13 +1,11 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import "./style.css";
+import { useHistory } from "react-router-dom";
 
 const Hero = () => {
-  const history = useHistory(); 
-
+  const history = useHistory();
   const handleClick = () => {
-    
-    history.push("/SiparisFormu");
+    history.push("/SiparisOlustur");
   };
 
   return (
@@ -29,4 +27,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
