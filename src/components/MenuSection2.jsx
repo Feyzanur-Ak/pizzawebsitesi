@@ -17,6 +17,14 @@ const Navbar = styled.div`
   padding: 20px 0;
   font-family: "Roboto Condensed", sans-serif;
   background-color: #faf7f2;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+  ;
+  }
 `;
 
 const Content = styled.div`
@@ -37,6 +45,14 @@ const Content = styled.div`
     color: red;
     font-weight: normal;
     font-size: 32px;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 50px;
+      width: 80%;
+      padding-left: 20px;
+    }
   }
 `;
 
@@ -70,6 +86,7 @@ const MenuItem = styled.div`
     height: 30px;
     margin-bottom: 5px;
   }
+
 `;
 const MenuSection2 = () => {
     const [activeMenu, setActiveMenu] = useState("Pizza");

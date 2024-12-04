@@ -73,7 +73,7 @@ const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 20px; /* Köşeleri yuvarlatmak için ekleme yapıldı */
+  border-radius: 20px;
 
   @media (max-width: 768px) {
     width: 100%;

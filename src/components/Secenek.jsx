@@ -15,6 +15,10 @@ const MenuContainer = styled.div`
   width: 20%;
   margin: 2px;
   margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const PizzaImage = styled.img`
@@ -25,25 +29,36 @@ const PizzaImage = styled.img`
 `;
 
 const PizzaName = styled.h2`
-  font-size: 1.5rem;
-  margin: 10px 0;
+  font-size: 1.2rem;
+  margin: 5px 0;
   color: #333;
+  text-align: left; 
+  width: 100%; 
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const PriceContainer = styled.div`
+  display: flex;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ce2829;
+  color: black;
 `;
 
 const DetailsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-top: 10px;
   font-size: 0.9rem;
   color: #555;
-`;
+  
+
+   `;
+
 
 const Secenek = ({ activeMenu }) => {
   const { name, image, price, subscribe, ratio, description } = activeMenu;
@@ -52,18 +67,18 @@ const Secenek = ({ activeMenu }) => {
   const handleClick = () => {
     history.push({
       pathname: "/SiparisOlustur",
-      state: { name, image, price, subscribe, ratio, description }, // Ürün bilgilerini gönderiyoruz
+      state: { name, image, price, subscribe, ratio, description },
     });
   };
 
   return (
     <MenuContainer>
       <PizzaImage src={image} alt={name} onClick={handleClick} />
-      <PizzaName>{name}</PizzaName>
+      <PizzaName >{name}</PizzaName>
       <PriceContainer>{price}₺</PriceContainer>
       <DetailsContainer>
-        <span>{ratio} ⭐</span>
-        <span>({subscribe})</span>
+        <span >{ratio} ⭐</span>
+        <span >({subscribe})</span>
       </DetailsContainer>
     </MenuContainer>
   );
