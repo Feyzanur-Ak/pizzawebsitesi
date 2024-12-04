@@ -39,7 +39,7 @@ const Content = styled.div`
   justify-content: left;
   padding: 0 20px;
   width: 100%; 
-  box-sizing: border-box; /* Taşmalar engelleniyor */
+  box-sizing: border-box;
 `;
 
 const Title = styled.h1`
@@ -221,6 +221,7 @@ const SummarySection = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 20px;
+  position: relative;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -239,6 +240,10 @@ const SummaryContainer = styled.div`
   align-items: center;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;  // Bu, container'ın alt kısmına boşluk ekler
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 
@@ -314,24 +319,33 @@ const QuantityInput = styled.input`
 `;
 
 const OrderButton = styled.button`
-  width: 100%;
-  padding: 15px; 
+  width: 58.5%;
+  height: 40px;
   font-size: 18px;  
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 5px;
+  margin-top: 40%;
+  padding-left: 20px;
   border: none;
   background-color:#FDC913;
   color: #292929;
   cursor: pointer;
+  position: absolute;
+  right: 0;
+ 
 
   &:disabled {
     background-color: #e0e0e0;
     color: #aaa;
     cursor: not-allowed;
   }
- @media (max-width: 768px) {
-   
- }
+
+@media (max-width: 768px) {
+  margin-bottom: 20px;
+  width: 50%;
+  padding-left: 20px;
+}
+
 `;
 
 const CheckboxContainer = styled.div`
@@ -614,13 +628,14 @@ const SiparisOlustur = () => {
               <span>Toplam</span>
               <span>{calculateTotal().toFixed(2)}₺</span>
             </PriceDetail>
-            <OrderButton
+            
+          </SummaryContainer>
+          <OrderButton
               onClick={handleOrderSubmit}
               disabled={!isValidForm()}
             >
               SİPARİŞ VER
             </OrderButton>
-          </SummaryContainer>
         </SummarySection>
       </form>
     </Container>
