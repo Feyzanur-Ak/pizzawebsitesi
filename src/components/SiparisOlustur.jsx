@@ -239,10 +239,11 @@ const SummaryContainer = styled.div`
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;  // Bu, container'ın alt kısmına boşluk ekler
+  margin-bottom: 80px;  // Bu, container'ın alt kısmına boşluk ekler
 
   @media (max-width: 768px) {
     width: 80%;
+    margin-top: 20px;
   }
 `;
 
@@ -274,11 +275,10 @@ const PriceDetail = styled.div`
 const QuantityControl = styled.div`
   width: 100%;
   margin-top: 50px;
+ 
 
   @media (max-width: 768px) {
-    margin-top: 20px;
-    display: flex;
-    
+    margin-top: 20px;    
   }
 `;
 
@@ -291,11 +291,12 @@ const QuantityButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
 
-
   &:disabled {
     background-color: #e0e0e0;
     cursor: not-allowed;
   }
+
+  
   
 `;
 
@@ -341,9 +342,8 @@ const OrderButton = styled.button`
   }
 
 @media (max-width: 768px) {
-  margin-bottom: 20px;
-  width: 50%;
-  padding-left: 20px;
+  margin-top: 90%;
+  width: 60%;
 }
 
 `;
