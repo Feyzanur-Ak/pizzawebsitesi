@@ -35,7 +35,7 @@ const Menu = {
             price: 25.99,
             subscribe: 149,
             ratio: 4.2,
-            description: "Taptaze sebzeler ve özel soslarla hazırlanan, hafif ama doyurucu vejetaryan bir seçenek."
+            description: "Taptaze sebzeler ve özel soslarla hazırlanan, hafif ama doyurucu vejetaryan bir seçenek.Hafif doyurucu ve taptaze peynirden yapılmış harika bir lezzet"
         },
         {
             id: 3,

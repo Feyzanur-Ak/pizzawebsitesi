@@ -2,9 +2,7 @@ import axios from "axios";
 import styled from "styled-components";
 import{ useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
-import logo from "../pictures/form-banner.png";
-
-
+import hommer from "../pictures/form-banner.png";
 
 const Container = styled.div`
   width: 30%;
@@ -12,45 +10,56 @@ const Container = styled.div`
   font-family: "Roboto Condensed", sans-serif;
 `;
 
-const Content = styled.div`
-  width: 100%;
-  background-color: #faf7f2;
-  text-align: center;
+const Heading = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
- 
+  padding: 0;
+  text-align: center;
+  margin-top: 0;
   
+  img {
+    width: 100%;
+    max-width: 450px; 
+    margin: 0 auto;
+  }
 `;
 
-const Image = styled.img`
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #faf7f2;
+  justify-content: left;
+  padding: 0 20px;
+  width: 100%; 
+  box-sizing: border-box; /* Taşmalar engelleniyor */
 `;
 
-  
 const Title = styled.h1`
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px; 
+ 
 `;
 
 const Price = styled.p`
   font-size: 22px;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 10px 0;
 `;
 
 const RatingContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
-  gap: 50px;
-  margin-top: -40px;
+  align-items: center; 
+  gap: 10px; 
+  margin-top: 10px;
 `;
 
 const Rating = styled.span`
   font-size: 16px;
-  color: #666;
+
 `;
 
 const ReviewCount = styled.span`
@@ -63,6 +72,9 @@ const Description = styled.p`
   line-height: 1.5;
   color: #333;
   margin-top: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const SelectionContainer = styled.div`
@@ -88,11 +100,11 @@ const Section = styled.div`
 const SectionTitle = styled.h3`
   margin-bottom: 10px;
   font-weight: bold;
-  color: black,;  /* Başlık rengini kırmızı yapıyoruz */
+  color: black,;  
   
   &::after {
-    content: " *"; /* Yıldız işaretini başlığa ekliyoruz */
-    color: red; /* Yıldız işareti kırmızı olacak */
+    content: " *"; 
+    color: red; 
   }
 `;
 
@@ -102,7 +114,7 @@ const SelectionOption = styled.div`
   font-size: 1rem;
   
   input[type="radio"] {
-    margin-right: 10px;  /* Radyo butonlarının sağında boşluk */
+    margin-right: 10px;  
   }
 
   select {
@@ -119,8 +131,8 @@ const ExtraContainer = styled.div`
 
 const ExtraList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 sütun */
-  grid-template-rows: repeat(5, auto); /* Her sütunda 5 satır */
+  grid-template-columns: repeat(3, 1fr); 
+  grid-template-rows: repeat(5, auto); 
   gap: 15px;
   max-height: 300px;
  
@@ -183,16 +195,19 @@ const SummarySection = styled.div`
 `;
 
 const SummaryContainer = styled.div`
+margin-top: 50px;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 80px;
-   background-color: #faf7f2;
-  width: 80%;
+  border-radius: 5px;
+  padding: 50px; 
+  background-color: #faf7f2;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;  // Bu, container'ın alt kısmına boşluk ekler
 `;
+
 
 const SummaryTitle = styled.h3`
   font-size: 18px;
@@ -216,22 +231,18 @@ const PriceDetail = styled.div`
     margin-top: 10px;
   }
 
-  strong {
-    font-size: 14px;
-    color: #333;
-  }
 `;
 
 const QuantityControl = styled.div`
   width: 100%;
-  margin-top: 20px;
+  margin-top: 50px;
 `;
 
 const QuantityButton = styled.button`
   width: 40px;
   height: 42px;
   font-size: 18px;
-  background-color: #faf7f2;
+  background-color: #FDC913;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -264,14 +275,13 @@ const QuantityInput = styled.input`
 `;
 
 const OrderButton = styled.button`
-  margin-top: 20px;
   width: 100%;
-  padding: 15px;
-  font-size: 16px;
+  padding: 15px; 
+  font-size: 18px;  
   font-weight: bold;
   border-radius: 10px;
   border: none;
-  background-color: #faf7f2;
+  background-color:#FDC913;
   color: #292929;
   cursor: pointer;
 
@@ -281,6 +291,7 @@ const OrderButton = styled.button`
     cursor: not-allowed;
   }
 `;
+
 const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
@@ -432,9 +443,10 @@ const SiparisOlustur = () => {
   };
 
   return (
-    <Container>
+    <>
+    <Heading>
       <Content>
-      <Image src={logo} />
+      <img src={hommer} />
           <Title>{productDetails.name}</Title>
       <Price>{BASE_PRICE}₺</Price>
       <RatingContainer>
@@ -443,7 +455,8 @@ const SiparisOlustur = () => {
       </RatingContainer>
       <Description>{productDetails.description}</Description>
     </Content>
-
+    </Heading>
+    <Container>
       <form onSubmit={(e) => e.preventDefault()}>
           <SelectionContainer>
       <Section>
@@ -552,11 +565,11 @@ const SiparisOlustur = () => {
             <SummaryTitle>Sipariş Toplamı</SummaryTitle>
             <PriceDetail>
               <span>Seçimler</span>
-              <strong>{extras.length * EXTRA_PRICE}₺</strong>
+              <span>{extras.length *quantity* EXTRA_PRICE}₺</span>
             </PriceDetail>
             <PriceDetail className="total">
               <span>Toplam</span>
-              <strong>{calculateTotal().toFixed(2)}₺</strong>
+              <span>{calculateTotal().toFixed(2)}₺</span>
             </PriceDetail>
             <OrderButton
               onClick={handleOrderSubmit}
@@ -568,6 +581,7 @@ const SiparisOlustur = () => {
         </SummarySection>
       </form>
     </Container>
+    </>
   );
 };
 

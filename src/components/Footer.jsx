@@ -188,7 +188,6 @@ const Footer = () => {
           
         </Section>
 
-        {/* Social Section */}
         <SocialContainer>
           <h2>Instagram</h2>
           <ImageContainer>
@@ -201,8 +200,8 @@ const Footer = () => {
           </ImageContainer>
         </SocialContainer>
       </Container>
-
-      {/* Footer Bottom Section */}
+     
+ 
       <FooterBottom>
         <p>© 2023 Teknolojik Yemekler. All rights reserved.</p>
       </FooterBottom>
