@@ -5,9 +5,14 @@ import { useLocation, useHistory } from "react-router-dom";
 import hommer from "../pictures/form-banner.png";
 
 const Container = styled.div`
-  width: 30%;
+  width: 32%;
   margin: 0 auto;
   font-family: "Roboto Condensed", sans-serif;
+
+  @media (max-width: 768px) {
+    width: 80%;
+    padding-left: 20px;
+  }
 `;
 
 const Heading = styled.div`
@@ -83,16 +88,24 @@ const SelectionContainer = styled.div`
   align-items: flex-start;
   margin-top: 20px;
   flex-wrap: wrap; /* Ekran küçüldüğünde, kutular alt alta sıralanabilir */
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Section = styled.div`
   flex: 1;
   margin-right: 20px;
   display: flex;
-  flex-direction: column;  /* Seçeneklerin dikey sıralanmasını sağlamak */
+  flex-direction: row; 
+  align-items :center;
+  justify-content: center;
+ 
   
   &:last-child {
     margin-right: 0;
+    flex-wrap: wrap;
   }
 
 `;
@@ -101,6 +114,7 @@ const SectionTitle = styled.h3`
   margin-bottom: 10px;
   font-weight: bold;
   color: black,;  
+  text-align:left;
   
   &::after {
     content: " *"; 
@@ -115,6 +129,10 @@ const SelectionOption = styled.div`
   
   input[type="radio"] {
     margin-right: 10px;  
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: relative;
   }
 
   select {
@@ -122,6 +140,13 @@ const SelectionOption = styled.div`
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    position: absolute;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 5px;
+   
   }
 `;
 
@@ -135,9 +160,10 @@ const ExtraList = styled.div`
   grid-template-rows: repeat(5, auto); 
   gap: 15px;
   max-height: 300px;
- 
-  
- 
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const ExtraNote = styled.p`
@@ -148,6 +174,10 @@ font-size: 14px;
 
 const NoteContainer = styled.div`
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 40%;
+  }
 `;
 
 const NoteInput = styled.textarea`
@@ -192,10 +222,13 @@ const SummarySection = styled.div`
   justify-content: space-between;
   margin-left: 20px;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const SummaryContainer = styled.div`
-margin-top: 50px;
+ margin-top: 50px;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 50px; 
@@ -236,6 +269,12 @@ const PriceDetail = styled.div`
 const QuantityControl = styled.div`
   width: 100%;
   margin-top: 50px;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    display: flex;
+    
+  }
 `;
 
 const QuantityButton = styled.button`
@@ -252,6 +291,7 @@ const QuantityButton = styled.button`
     background-color: #e0e0e0;
     cursor: not-allowed;
   }
+  
 `;
 
 const QuantityInput = styled.input`
@@ -268,9 +308,8 @@ const QuantityInput = styled.input`
   border-radius: 0;
   box-shadow: none;
 
-  &:focus {
-    outline: none;
-    border: 1px solid #ccc;
+  @media (max-width: 768px) {
+    
   }
 `;
 
@@ -290,6 +329,9 @@ const OrderButton = styled.button`
     color: #aaa;
     cursor: not-allowed;
   }
+ @media (max-width: 768px) {
+   
+ }
 `;
 
 const CheckboxContainer = styled.div`
@@ -366,6 +408,7 @@ const SiparisOlustur = () => {
     "Kabak",
     "Soğan",
     "Sarımsak",
+    "Zeytin"
   ];
 
   useEffect(() => {
@@ -465,28 +508,28 @@ const SiparisOlustur = () => {
           <input
             type="radio"
             name="size"
-            value="Küçük"
+            value="S"
             onChange={(e) => setSize(e.target.value)}
           />
-          Küçük
+        S
         </SelectionOption>
         <SelectionOption>
           <input
             type="radio"
             name="size"
-            value="Orta"
+            value="M"
             onChange={(e) => setSize(e.target.value)}
           />
-          Orta
+         M
         </SelectionOption>
         <SelectionOption>
           <input
             type="radio"
             name="size"
-            value="Büyük"
+            value="BüLyük"
             onChange={(e) => setSize(e.target.value)}
           />
-          Büyük
+        L
         </SelectionOption>
       </Section>
 
@@ -497,7 +540,7 @@ const SiparisOlustur = () => {
             value={dough}
             onChange={(e) => setDough(e.target.value)}
           >
-            <option value="">Hamur Kalınlığı</option>
+            <option value="">--Hamur Kalınlığı Seç--</option>
             <option value="İnce">İnce</option>
             <option value="Normal">Normal</option>
             <option value="Kalın">Kalın</option>
