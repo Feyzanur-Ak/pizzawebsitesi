@@ -69,15 +69,15 @@ const ImageSection = styled.div`
 
 const ImageContainer = styled.div`
   background-color: #ce2829;
- 
   width: 40%;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
+  border-radius: 20px; /* Köşeleri yuvarlatmak için ekleme yapıldı */
 
   @media (max-width: 768px) {
     width: 100%;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     position: relative;
   }
 `;
@@ -103,50 +103,63 @@ const RightImages = styled.div`
 `;
 
 const Content = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  color: white;
+position: absolute;
+left: 23%; 
+transform: translate(-50%, -50%);
+color: white;
 
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  left: 25%;
+  top:25%;
+  transform: translate(-50%, -50%);
+ 
   h1 {
     font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 10px;
   }
 
   p {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: white;
+    font-size: 14px;
   }
-
-  @media (max-width: 768px) {
-    top: 0%; 
-    left: 10px;
-   
-    h1 {
-      font-size: 3rem;
-    }
-
-    p {
-      font-size: 14px;
-    }
-  }
+}
 `;
 
 const Content1 = styled.div`
   position: absolute;
   left: 40px;
-  padding-top: 20px;
+  top: 20px; 
   color: black;
   background-color: transparent;
 
   @media (max-width: 768px) {
     left: 20px;
-    top: 10px;
+    top: 20px;
   }
 `;
 
+const Content2 = styled.div`
+  position: absolute;
+  left: 40px;
+  top: 60%;
+  color: black;
+  background-color: transparent;
+
+  @media (max-width: 768px) {
+    left: 20px;
+    top: 200px; 
+  }
+`;
 const Button = styled.button`
   background-color: white;
   color: #ce2829;
@@ -200,7 +213,7 @@ const MenuSection = () => {
       <ImageSection>
         
         <ImageContainer>
-          <img src={kart1} alt="Pizza" />
+          <img src={kart1}  alt="Pizza"  style={{borderRadius: "20px"}}/>
           <Content>
             <h1>Özel <br /> Lezzetus</h1>
             <p>Position: Absolute Acı Burger</p>
@@ -216,10 +229,10 @@ const MenuSection = () => {
               <Button onClick={handleClick}>SİPARİŞ VER</Button>
             </Content1>
             <img src={kart2} alt="Hackathlon" />
-            <Content1>
+            <Content2>
               <h2> <span style={{ color: "red" }}>Çooook</span> Hızlı <br /> npm gibi kurye</h2>
               <Button onClick={handleClick}>SİPARİŞ VER</Button>
-            </Content1>
+            </Content2>
             <img src={kart3} alt="Kurye" />
           </div>
         </RightImages>
