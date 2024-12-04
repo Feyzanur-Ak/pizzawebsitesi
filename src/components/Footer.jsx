@@ -107,43 +107,38 @@ const Section = styled.div`
 `;
 
 const SocialContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 
+  text-align: left;
+  padding-right :25%;
   h2 {
     font-size: 18px;
-    text-align: left;
-    padding-left: 20px;
-  }
-
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction:row;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 30%;
+    color: white;
+    margin-bottom: 20px;
   }
 `;
 
+
 const ImageContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-  width:80%
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /*3 sutün olasun diye */
+  gap: 15px; /* Resimler arasındaki boşluk */
+  justify-items: center;
+  margin: 0 auto;
+  max-width: 100%; /* Görsellerin container'a sığmasını sağlar */
 
   img {
-    width: 30%;
-    
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Resmin kesilmeden düzgün şekilde sığması için */
+   
   }
 
   @media (max-width: 768px) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; 
   }
 `;
 
@@ -189,6 +184,8 @@ const Footer = () => {
               <li>Position Absolute Acı Burger</li>
             </ul>
           </MenuContainer>
+
+          
         </Section>
 
         {/* Social Section */}
