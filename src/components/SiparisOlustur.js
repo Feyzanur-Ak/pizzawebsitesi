@@ -110,8 +110,9 @@ export const Section = styled.div`
   }
 
   @media (max-width: 768px) {
-    flex-direction: row; /* Mobilde de yatay sıralama devam eder */
-    flex-wrap: wrap; /* Ekran küçüldüğünde elemanlar taşarsa alt alta gelir */
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+  
   }
 
 `;
@@ -158,6 +159,7 @@ export const SelectionOption = styled.div`
     border-color: white; /* Seçili durumdaki sınır rengi */
     color: #292929; /* Seçili durumdaki yazı rengi */
   }
+
 `;
 
 
