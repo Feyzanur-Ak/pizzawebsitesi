@@ -13,7 +13,7 @@ const GridContainer = styled.div`
 `;
 
 const Secenekler = ({ activeMenu }) => {
-  const filteredItems = Menu[activeMenu] || []; // Aktif menüye göre filtrele
+  const filteredItems = Menu[activeMenu] || []; 
 
   return (
     <GridContainer>

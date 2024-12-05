@@ -114,6 +114,7 @@ const SiparisToplam = styled.div`
 `;
 
 const SiparisOnay = () => {
+   
   const location = useLocation();
   const orderData = location.state;
 

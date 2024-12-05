@@ -296,8 +296,7 @@ const QuantityButton = styled.button`
     cursor: not-allowed;
   }
 
-  
-  
+
 `;
 
 const QuantityInput = styled.input`
@@ -386,6 +385,8 @@ const Label = styled.label`
 `;
 // Main Component
 const SiparisOlustur = () => {
+
+ 
   const location = useLocation();
   const history = useHistory();
 
