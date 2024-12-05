@@ -504,7 +504,7 @@ const SiparisOlustur = () => {
     <>
     <Heading>
       <Content>
-      <img src={hommer} />
+      <img src={hommer}  />
           <Title>{productDetails.name}</Title>
       <Price>{BASE_PRICE}₺</Price>
       <RatingContainer>
