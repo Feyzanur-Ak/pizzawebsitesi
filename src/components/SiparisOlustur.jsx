@@ -77,9 +77,13 @@ const Description = styled.p`
   line-height: 1.5;
   color: #333;
   margin-top: 10px;
-  width: 80%;
+  width: 32%;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const SelectionContainer = styled.div`
