@@ -2,7 +2,7 @@ import axios from "axios";
 import{ useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import hommer from "../pictures/form-banner.png";
-import {Container, Heading, Content, Title, Price, RatingContainer, Rating, ReviewCount, Description, SelectionContainer,Section, SectionTitle, SelectionOption, ExtraContainer, ExtraList, ExtraNote, NoteContainer, NoteInput, InputContainer, InputLabel, InputField, SummarySection, SummaryContainer, SummaryTitle, PriceDetail, QuantityControl, QuantityButton, QuantityInput, OrderButton, CheckboxContainer, HiddenCheckbox, StyledCheckbox, Label} from   "./SiparisOlustur.js"
+import {Container, Heading, Content, Title, Price, RatingContainer, Rating, ReviewCount, Description, SelectionContainer,Section, SectionTitle, SelectionOption, SelectionOption1, ExtraContainer, ExtraList, ExtraNote, NoteContainer, NoteInput, InputContainer, InputLabel, InputField, SummarySection, SummaryContainer, SummaryTitle, PriceDetail, QuantityControl, QuantityButton, QuantityInput, OrderButton, CheckboxContainer, HiddenCheckbox, StyledCheckbox, Label} from   "./SiparisOlustur.js"
 
 
 // Main Component
@@ -140,39 +140,42 @@ const SiparisOlustur = () => {
       <form onSubmit={(e) => e.preventDefault()}>
           <SelectionContainer>
       <Section>
-        <SectionTitle>Boyut Seç</SectionTitle>
+        <SectionTitle>Boyut Seç <span style={{ color: "red" }}>*</span> </SectionTitle>
         <SelectionOption>
           <input
             type="radio"
+            id="size-small"
             name="size"
             value="S"
             onChange={(e) => setSize(e.target.value)}
           />
-        S
+          <label htmlFor="size-small">S</label>
         </SelectionOption>
         <SelectionOption>
           <input
             type="radio"
+            id="size-medium"
             name="size"
             value="M"
             onChange={(e) => setSize(e.target.value)}
           />
-         M
+          <label htmlFor="size-medium">M</label>
         </SelectionOption>
         <SelectionOption>
           <input
             type="radio"
+            id="size-large"
             name="size"
-            value="BüLyük"
+            value="L"
             onChange={(e) => setSize(e.target.value)}
           />
-        L
-        </SelectionOption>
-      </Section>
+          <label htmlFor="size-large">L</label>
+    </SelectionOption>
+          </Section>
 
       <Section>
-        <SectionTitle>Hamur Seç</SectionTitle>
-        <SelectionOption>
+        <SectionTitle>Hamur Seç <span style={{ color: "red" }}>*</span></SectionTitle>
+        <SelectionOption1>
           <select
             value={dough}
             onChange={(e) => setDough(e.target.value)}
@@ -182,13 +185,13 @@ const SiparisOlustur = () => {
             <option value="Normal">Normal</option>
             <option value="Kalın">Kalın</option>
           </select>
-        </SelectionOption>
+        </SelectionOption1>
       </Section>
     </SelectionContainer>
 
     <ExtraContainer>
       <SectionTitle >Ek Malzemeler</SectionTitle>
-      <ExtraNote>En Fazla 10 malzeme seçebilirsiniz. 5₺</ExtraNote>
+      <ExtraNote>En az 4 malzeme seçmelisiniz.En Fazla 10 malzeme seçebilirsiniz. 5₺</ExtraNote>
       <ExtraList>
         {ekstraMalzemeler.map((extra) => (
           <CheckboxContainer key={extra}>

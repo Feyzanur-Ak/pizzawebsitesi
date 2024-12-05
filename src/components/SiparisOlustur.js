@@ -92,6 +92,7 @@ export const SelectionContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    align-items: stretch;
   }
 `;
 
@@ -99,57 +100,85 @@ export const Section = styled.div`
   flex: 1;
   margin-right: 20px;
   display: flex;
-  flex-direction: row; 
-  align-items :center;
+  flex-direction: row; /* Yatay sıralama */
+  align-items: center;
   justify-content: center;
- 
-  
+
   &:last-child {
     margin-right: 0;
     flex-wrap: wrap;
   }
 
+  @media (max-width: 768px) {
+    flex-direction: row; /* Mobilde de yatay sıralama devam eder */
+    flex-wrap: wrap; /* Ekran küçüldüğünde elemanlar taşarsa alt alta gelir */
+  }
+
 `;
 
 export const SectionTitle = styled.h3`
-  margin-bottom: 10px;
+margin-top: 10px;
   font-weight: bold;
   color: black,;  
   text-align:left;
   
-  &::after {
-    content: " *"; 
-    color: red; 
-  }
 `;
 
 
 export const SelectionOption = styled.div`
-  margin-bottom: 10px;
-  font-size: 1rem;
-  
+  display: inline-block;
+  margin-right: 10px;
+
   input[type="radio"] {
-    margin-right: 10px;  
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    position: relative;
+    display: none; /* Varsayılan radio butonunu gizler */
   }
 
-  select {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    position: absolute;
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Kutunun genişliği */
+    height: 50px; /* Kutunun yüksekliği */
+    border: 2px solid white; /* Kutunun sınırı */
+    border-radius: 50%; /* Tam daire */
+    background-color: #faf7f2; /* Varsayılan arka plan rengi */
+    font-size: 16px; /* Harf boyutu */
+    font-weight: bold;
+    cursor: pointer; /* Tıklanabilir işaretçisi */
+    color: #333; /* Harf rengi */
+    margin: 5px;
+
+    &:hover {
+      background-color: #f5e8d9; /* Hover sırasında arka plan rengi */
+    }
   }
 
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    padding: 5px;
-   
+  input[type="radio"]:checked + label {
+    background-color: #f5e8d9; /* Seçili durumdaki arka plan rengi */
+    border-color: white; /* Seçili durumdaki sınır rengi */
+    color: #292929; /* Seçili durumdaki yazı rengi */
   }
 `;
+
+
+export const SelectionOption1 = styled.div`
+     display: inline-block;
+    margin-right: 10px;
+
+  select {
+    width: 250px; /* Genişlik */
+    padding: 10px; /* İç boşluk */
+    font-size: 16px; /* Yazı boyutu */
+    border: 1px solid #ddd; /* Sınır */
+    border-radius: 8px; /* Köşeleri yuvarlama */
+    background-color: #faf7f2; /* Arka plan rengi */
+    color: #333; /* Yazı rengi */
+    appearance: none; /* Varsayılan ok simgesini kaldırır */
+    outline: none; /* Odaklanınca mavi sınırı kaldırır */
+    cursor: pointer; /* İşaretçi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  }
+  `;
 
 export const ExtraContainer = styled.div`
   margin-top: 40px;
@@ -198,7 +227,7 @@ export const InputContainer = styled.div`
 `;
 
 export const InputLabel = styled.label`
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
@@ -363,17 +392,16 @@ export const StyledCheckbox = styled.div`
   height: 25px;
   border-radius: 4px;
   background-color: ${(props) => (props.checked ? '#FDC913' : '#faf7f2')};
-  border: 2px solid #ccc;
-  position: relative;
+  border: 2px solid ${(props) => (props.checked ? '#FDC913' : '#ccc')};
+    display: flex;
+    align-items: center;
+    justify-content: center;
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 10px;
 
   &::after {
     content: ${(props) => (props.checked ? `"✓"` : '""')};
-    position: absolute;
-    top: 3px;
-    left: 6px;
     color: black;
     font-size: 18px;
     font-weight: bold;
