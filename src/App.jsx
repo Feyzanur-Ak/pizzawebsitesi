@@ -4,8 +4,8 @@ import '../index.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Hero from './components/Hero';
 import Header from './components/Header';
-import Footer from './components/Footer'; // Footer bileşenini import edin
-import SiparisOlustur from './components/SiparisOlustur';
+import Footer from './components/Footer'; 
+import SiparisOlustur from './components/SiparisOlustur.jsx';
 import SiparisOnay from './components/SiparisOnay';
 import MenuSection from './components/MenuSection';
 import MenuSection2 from './components/MenuSection2';
